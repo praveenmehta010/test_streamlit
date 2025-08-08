@@ -1,0 +1,10 @@
+# Dir
+test
+__pycache__/
+venv
+.devcontainer/devcontainer.json
+
+# Env File
+.env
+
+.streamlit/secrets.toml

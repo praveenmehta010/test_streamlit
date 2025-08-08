@@ -14,9 +14,10 @@ user_input = st.text_input(
 )
 
 
-if st.button("🚀 Find Courses"):
-    build_agent()
-# # result = agent.invoke({"user_input": user_input})
+if st.button("🚀 Find Courses") and user_input:
+    with st.spinner("Thinking..."):
+        agent = build_agent()
+        result = agent.invoke({"user_input": user_input})
         
         # if st.secrets.get("DEBUG") == "true":
         #     st.subheader("🧪 Raw JSON Result (for debugging)")
@@ -25,20 +26,20 @@ if st.button("🚀 Find Courses"):
         # for key, value in st.secrets.items():
         #     st.write(f"{key}: {value}")
 
-        # courses = result.get("courses", [])
+        courses = result.get("courses", [])
 
-        # if courses:
-        #     st.success("✅ Here are your personalized course recommendations:")
-        #     for course in courses:
-        #         st.markdown(f"""
-        #             <div style="padding: 1rem; background: linear-gradient(to right, #e0f7fa, #f1f8e9); border-radius: 12px; margin-bottom: 12px;">
-        #                 <a href="{course}" target="_blank" style="color: black; text-decoration: none; font-size: 16px;">
-        #             {course}
-        #         </a>
-        #             </div>
-        #         """, unsafe_allow_html=True)
-        # else:
-        #     st.warning("😕 Sorry, I couldn't find any relevant courses. Try a different topic!")
+        if courses:
+            st.success("✅ Here are your personalized course recommendations:")
+            for course in courses:
+                st.markdown(f"""
+                    <div style="padding: 1rem; background: linear-gradient(to right, #e0f7fa, #f1f8e9); border-radius: 12px; margin-bottom: 12px;">
+                        <a href="{course}" target="_blank" style="color: black; text-decoration: none; font-size: 16px;">
+                    {course}
+                </a>
+                    </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.warning("😕 Sorry, I couldn't find any relevant courses. Try a different topic!")
 
 st.markdown("---")
 st.markdown("<p style='text-align: center; font-size: 12px;'>Made with ❤️ for SDG - Quality Education by Praveen Mehta</p>", unsafe_allow_html=True)
