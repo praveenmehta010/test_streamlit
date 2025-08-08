@@ -8,7 +8,7 @@ st.warning("⚠️ Do NOT use this page in production! This is for debugging pur
 
 # Secret keys to show
 secrets = {
-    "SERPAPI_API_KEY": st.secrets["API"],
+    "SERPAPI_API_KEY": st.secrets["aAPI"],
 }
 
 # Display the secrets
