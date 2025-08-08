@@ -15,19 +15,8 @@ user_input = st.text_input(
 
 
 if st.button("🚀 Find Courses"):
-    with st.spinner("Thinking..."):
-        secrets = {
-    "SERPAPI_API_KEY": st.secrets["aAPI"],
-}
-
-# Display the secrets
-for key, value in secrets.items():
-    if value:
-        with st.expander(f"{key}"):
-            st.code(value, language="bash")
-    else:
-        st.error(f"{key} not found.")
-        # result = agent.invoke({"user_input": user_input})
+    build_agent()
+# # result = agent.invoke({"user_input": user_input})
         
         # if st.secrets.get("DEBUG") == "true":
         #     st.subheader("🧪 Raw JSON Result (for debugging)")
