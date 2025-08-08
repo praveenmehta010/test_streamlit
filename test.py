@@ -14,7 +14,7 @@ user_input = st.text_input(
 )
 
 
-if st.button("🚀 Find Courses") and user_input:
+if st.button("🚀 Find Courses"):
     with st.spinner("Thinking..."):
         secrets = {
     "SERPAPI_API_KEY": st.secrets["aAPI"],
